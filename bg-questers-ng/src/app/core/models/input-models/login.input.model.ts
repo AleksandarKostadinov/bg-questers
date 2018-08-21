@@ -1,0 +1,12 @@
+export class LoginInputModel {
+  constructor(
+    public email: string,
+    public password: string
+  ) { }
+}
+
+// Components that will use this model
+// LoginFormComponent (two-way data binding)
+
+// Services that will use this model
+// AuthService

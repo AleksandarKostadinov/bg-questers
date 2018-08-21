@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">You can advertise here!</div>
+    <div class="col-6">
+      <h1>Login Form</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <div *ngIf="loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)" class="alert alert-danger">
+            <div *ngIf="loginForm.controls.email.errors">
+              <div *ngIf="loginForm.controls.email.errors.email">
+                Please enter a valid email!
+              </div>
+              <div *ngIf="loginForm.controls.email.errors.required">
+                Email is required to login!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" formControlName="password">
+
+          <div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)"
+            class="alert alert-danger">
+            <div *ngIf="loginForm.controls.password.errors">
+              <div *ngIf="loginForm.controls.password.errors.nomatch">
+                Password and Confirm Password have to match!
+              </div>
+              <div *ngIf="loginForm.controls.password.errors.required">
+                Password is required!
+              </div>
+              <div *ngIf="loginForm.controls.password.errors.minlength">
+                Password have to be at least 6 symbols!
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="pwdConfirm">Password:</label>
+          <input type="password" class="form-control" id="pwdConfirm" formControlName="confirmPassword">
+
+          <div *ngIf="loginForm.controls.confirmPassword.invalid && (loginForm.controls.confirmPassword.dirty || loginForm.controls.confirmPassword.touched)"
+            class="alert alert-danger">
+            <div *ngIf="loginForm.controls.confirmPassword.errors">
+              <div *ngIf="loginForm.controls.confirmPassword.errors.nomatch">
+                  Confirm Password and Password have to match!
+              </div>
+              <div *ngIf="loginForm.controls.confirmPassword.errors.required">
+                Confirm Password is required!
+              </div>
+              <div *ngIf="loginForm.controls.confirmPassword.errors.minlength">
+                Confirm Password have to be at least 6 symbols!
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-default">Login</button>
+      </form>
+      <p class="text text-dark">
+        You don't have an account.
+        <a routerLink="/auth/register" class="text-success">Make one here.</a>
+      </p>
+    </div>
+  </div>
+</div>
