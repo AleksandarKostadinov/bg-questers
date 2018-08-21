@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RaidsCreateComponent } from './raids-create.component';
+import { RaidsEditComponent } from './raids-edit.component';
 
-describe('RaidsCreateComponent', () => {
-  let component: RaidsCreateComponent;
-  let fixture: ComponentFixture<RaidsCreateComponent>;
+describe('RaidsEditComponent', () => {
+  let component: RaidsEditComponent;
+  let fixture: ComponentFixture<RaidsEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RaidsCreateComponent ]
+      declarations: [ RaidsEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RaidsCreateComponent);
+    fixture = TestBed.createComponent(RaidsEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

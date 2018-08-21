@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent {
-  private show = '';
+  private showQuests = '';
+  private showRaids = '';
 
   constructor(
     private authService: AuthService,
@@ -19,11 +20,19 @@ export class HeaderComponent {
     this.authService.logout();
   }
 
-  toggleDropdown() {
-    if (this.show) {
-      this.show = '';
+  toggleDropdownQuests() {
+    this.showQuests = this.toggle(this.showQuests);
+  }
+
+  toggleDropdownRaids() {
+    this.showRaids = this.toggle(this.showRaids);
+  }
+
+  private toggle(show) {
+    if (show) {
+      return '';
     } else {
-      this.show = 'show';
+      return 'show';
     }
   }
 }

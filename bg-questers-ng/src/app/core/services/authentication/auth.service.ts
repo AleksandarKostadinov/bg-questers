@@ -55,7 +55,7 @@ export class AuthService {
     }
   }
 
-  private getToken() {
+  getToken() {
     firebase.auth()
       .currentUser
       .getIdToken()
@@ -66,6 +66,16 @@ export class AuthService {
       .catch();
 
     return this.token;
+  }
+
+  get email(): string {
+    if (firebase.auth().currentUser) {
+      return firebase.auth()
+        .currentUser
+        .email;
+    }
+
+    return 'Anonymous';
   }
 
   private handleError(err) {

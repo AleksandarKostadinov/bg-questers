@@ -8,16 +8,20 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { AuthService } from '../services/authentication/auth.service';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor {
+export class TokenInterceptor implements HttpInterceptor {
+  constructor(
+    private authService: AuthService
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler)
     : Observable<HttpEvent<any>> {
-      const token = localStorage.getItem('authtoken');
+      const token = this.authService.getToken();
       if (token) {
         req = req.clone({
-          setHeaders: { 'Authorization': `Bearer ${token}` }
+          url: `${req.url}?auth=${token}`
         });
       }
 

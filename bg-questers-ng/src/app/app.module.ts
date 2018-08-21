@@ -12,7 +12,7 @@ import { SharedModule } from './components/shared/shared.module';
 
 import { ServiceModule } from './core/services/services.module';
 import { GuardsModule } from './core/guards/guards.module';
-import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
@@ -33,7 +33,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
+      useClass: TokenInterceptor,
       multi: true,
     },
     {

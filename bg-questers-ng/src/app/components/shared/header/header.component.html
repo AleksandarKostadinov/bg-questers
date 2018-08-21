@@ -15,13 +15,23 @@
             </a>
           </li>
 
-          <li *ngIf="authService.isLoggedIn()" class="nav-item dropdown {{show}}">
-            <a (click)="toggleDropdown()" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" >Quests</a>
-            <div class="dropdown-menu {{show}}" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+          <li *ngIf="authService.isLoggedIn()" class="nav-item dropdown {{showQuests}}">
+            <a (click)="toggleDropdownQuests()" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" >Quests</a>
+            <div class="dropdown-menu {{showQuests}}" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
               <a class="dropdown-item" routerLink="/quests">All</a>
               <a class="dropdown-item" routerLink="/quests/mine">Your quests</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" routerLink="/quests/suggest">Suggest a quest to the admin.</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown {{showRaids}}">
+            <a (click)="toggleDropdownRaids()" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" >Raids</a>
+            <div class="dropdown-menu {{showRaids}}" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+              <a class="dropdown-item" routerLink="/raids">All</a>
+              <a class="dropdown-item" routerLink="/raids/mine">Your raids</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/raids/create">Create a raid</a>
             </div>
           </li>
 

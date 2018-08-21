@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { QuestsRoutingModule } from './quests.routing.module';
-import { questCompoents } from '.';
+import { questComponents } from '.';
 
 @NgModule({
   imports: [
     QuestsRoutingModule
   ],
-  declarations: [...questCompoents],
-  exports: [...questCompoents]
+  declarations: [...questComponents],
+  exports: [...questComponents]
 })
 export class QuestsModule { }

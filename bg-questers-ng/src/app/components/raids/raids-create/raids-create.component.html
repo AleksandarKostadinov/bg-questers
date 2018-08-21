@@ -1,3 +1,85 @@
-<p>
-  raids-create works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">You can advertise here!</div>
+    <div class="col-6">
+
+      <form [formGroup]="createRaidForm" (ngSubmit)="create()" class="form-horizontal">
+        <fieldset>
+          <legend>Initiate a Raid</legend>
+
+          <div class="form-group">
+            <label for="inputGoal" class="col-lg-2 control-label">Goal</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputGoal" formControlName="goal">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputLocation" class="col-lg-2 control-label">Location</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputLocation" formControlName="location">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputImgUrl" class="col-lg-2 control-label">Image</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputImgUrl" formControlName="imgUrl">
+            </div>
+            <img *ngIf="imgUrl" src="{{imgUrl}}"/>
+          </div>
+
+          <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textArea" formControlName="description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPeopleNeeded" class="col-lg-2 control-label">People Needed</label>
+            <div class="col-lg-10">
+              <input type="number" class="form-control" id="inputPeopleNeeded" formControlName="peopleNeeded">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPeopleParticipating" class="col-lg-2 control-label">People Participating</label>
+            <div class="col-lg-10">
+              <input type="number" class="form-control" id="inputPeopleParticipating" formControlName="peopleParticipating">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputStartDate" class="col-lg-2 control-label">Start Date</label>
+            <div class="col-lg-10">
+              <input type="date" class="form-control" id="inputStartDate" formControlName="startDate">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="textAreaDetails" class="col-lg-2 control-label">Additional info</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textAreaDetails" formControlName="details"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="textAreaNeeded" class="col-lg-2 control-label">Items needed</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textAreaNeeded" formControlName="itemsNeeded"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="reset" class="btn btn-default">Cancel</button>
+              <button type="submit" [disabled]="createRaidForm.invalid" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+    </div>
+  </div>
+</div>
