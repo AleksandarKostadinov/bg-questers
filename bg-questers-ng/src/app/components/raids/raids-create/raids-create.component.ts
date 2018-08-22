@@ -4,6 +4,7 @@ import { RaidStatus } from '../../../core/enums/raid-status.emun';
 import { AuthService } from '../../../core/services/authentication/auth.service';
 import { RaidsService } from '../../../core/services/raids/raids.service';
 import { RaidInputModel } from '../../../core/models/input-models/raid.input.model';
+import { getHoursInMiliseconds } from '../../../core/utils/helper-functions';
 
 @Component({
   templateUrl: './raids-create.component.html'
@@ -33,7 +34,7 @@ export class RaidsCreateComponent implements OnInit {
       peopleParticipating: [5, [Validators.required, Validators.min(0)]],
       status: [RaidStatus.NotStarted],
       isFinished: [false],
-      startDate: [(new Date(this.now.getTime() + this.getHoursInMiliseconds(24))).toISOString().slice(0, 10), Validators.required],
+      startDate: [(new Date(this.now.getTime() + getHoursInMiliseconds(24))).toISOString().slice(0, 10), Validators.required],
       createdAtTimestamp: [Date.now(), Validators.required],
       createdBy: [this.authService.email, Validators.required],
       details: [''],
@@ -56,9 +57,5 @@ export class RaidsCreateComponent implements OnInit {
 
   get startDate() {
     return this.createRaidForm.get('startDateTimestamp').value;
-  }
-
-  private getHoursInMiliseconds(hours: number): number {
-    return hours * 60 * 60 * 1000;
   }
 }
