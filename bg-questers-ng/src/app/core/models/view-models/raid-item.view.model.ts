@@ -9,6 +9,7 @@ export class RaidItemViewModel {
     public isFinished: boolean,
     public startDateTimestamp: string,
     public createdBy: string,
+    public imgUrl: string,
     public itemsNeeded?: string,
   ) { }
 }

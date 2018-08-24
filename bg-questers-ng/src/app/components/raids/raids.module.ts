@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { RaidsRoutingModule } from './raids-routing.module';
 import { raidsComponents } from '.';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { raidsComponents } from '.';
     RaidsRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   declarations: [...raidsComponents],
   exports: [...raidsComponents]

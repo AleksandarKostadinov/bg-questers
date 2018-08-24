@@ -32,7 +32,7 @@ export class RaidsCreateComponent implements OnInit {
 
 
     this.createRaidForm = this.fb.group({
-      goal: ['Goal 1', Validators.required],
+      goal: ['Clean up the park', Validators.required],
       location: ['Sofia, Bulgaria', Validators.required],
       imgUrl: ['https://cdn.pixabay.com/photo/2018/08/01/21/43/buggy-3578283_960_720.jpg', Validators.required],
       description: ['Description 1', Validators.required],

@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" routerLink="/quests">Bg Questers</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
+      <button class="navbar-toggler {{collapsed}}" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
         aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span (click)="toggleNavList()" class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarColor02">
+      <div class="collapse navbar-collapse {{showNav}}" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" routerLink="home">Home
@@ -15,7 +15,7 @@
             </a>
           </li>
 
-          <li *ngIf="authService.isLoggedIn()" class="nav-item dropdown {{showQuests}}">
+          <li *ngIf="authService.isLoggedIn() && false" class="nav-item dropdown {{showQuests}}">
             <a (click)="toggleDropdownQuests()" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" >Quests</a>
             <div class="dropdown-menu {{showQuests}}" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
               <a class="dropdown-item" routerLink="/quests">All</a>
@@ -27,7 +27,7 @@
 
           <li class="nav-item dropdown {{showRaids}}">
             <a (click)="toggleDropdownRaids()" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" >Raids</a>
-            <div class="dropdown-menu {{showRaids}}" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+            <div (click)="toggleDropdownRaids()" class="dropdown-menu {{showRaids}}" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
               <a class="dropdown-item" routerLink="/raids">All</a>
               <a class="dropdown-item" routerLink="/raids/mine">Your raids</a>
               <div class="dropdown-divider"></div>
@@ -45,10 +45,6 @@
             <a class="nav-link" (click)="logout()">logout</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
       </div>
     </nav>
   </div>

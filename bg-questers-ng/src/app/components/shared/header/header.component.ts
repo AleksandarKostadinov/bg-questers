@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   private showQuests = '';
   private showRaids = '';
+  private collapsed = 'collapsed';
+  private showNav = '';
 
   constructor(
     private authService: AuthService,
@@ -33,6 +35,20 @@ export class HeaderComponent {
       return '';
     } else {
       return 'show';
+    }
+  }
+
+  private toggleNavList() {
+    this.collapsed = this.toggleNavCollapsed(this.collapsed);
+    this.showNav = this.toggle(this.showNav);
+  }
+
+
+  private toggleNavCollapsed(collapsed) {
+    if (collapsed) {
+      return '';
+    } else {
+      return 'collapsed';
     }
   }
 }

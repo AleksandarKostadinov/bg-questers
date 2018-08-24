@@ -34,6 +34,7 @@ export class RaidsService {
                 element.isFinished,
                 element.startDateTimestamp,
                 element.createdBy,
+                element.imgUrl,
                 element.itemsNeeded
               )
             );

@@ -25,6 +25,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.toastr.error(err.error.message, 'Oops.');
             break;
             case 401:
+            this.toastr.error(err.error.message, 'Oops.');
             break;
             default:
               this.toastr.error(err.error.message, 'Oops.');

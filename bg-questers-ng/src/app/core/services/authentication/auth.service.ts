@@ -80,6 +80,10 @@ export class AuthService {
     return 'Anonymous';
   }
 
+  userIsAdmin(): boolean {
+    return this.email === 'test1@test1.com';
+  }
+
   private handleError(err) {
     this.toastr.error(err.message, 'Oops!');
   }

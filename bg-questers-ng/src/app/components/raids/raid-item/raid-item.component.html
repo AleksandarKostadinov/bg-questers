@@ -1,9 +1,12 @@
-<div class="custom-container">
-  <img class="img-responsive rounded" src="./../../../../assets/tunnel-1756856_960_720.jpg" alt="Default img">
+<div *ngIf="raid" class="custom-container">
+  <img class="img-responsive rounded" src={{raid.imgUrl}} alt="Default img">
   <div class="custom-top-left">{{raid.goal}}</div>
   <div class="custom-bottom-right">{{raid.location}}</div>
   <div class="custom-centered">{{raid.status}}</div>
 </div>
 
-<a *ngIf="authService.email === raid.createdBy" routerLink="/raids/edit/{{raid.id}}" class="btn btn-primary">Edit</a>
-<a *ngIf="authService.email === raid.createdBy" routerLink="/raids/delete/{{raid.id}}" class="btn btn-danger">Delete</a>
+<div class="btn-group">
+  <a  routerLink="/raids/edit/{{raid.id}}" class="btn btn-primary">Edit</a>
+  <a routerLink="/raids/delete/{{raid.id}}" class="btn btn-danger">Delete</a>
+</div>
+<a routerLink="/raids/{{raid.id}}" class="btn btn-info">Details</a>
