@@ -9,7 +9,7 @@ export class RaidDetailsViewModel {
     public peopleParticipating: number,
     public status: string,
     public isFinished: boolean,
-    public startDateTimestamp: string,
+    public startDateTimestamp: number,
     public endDateTimestamp: string,
     public createdAtTimestamp: string,
     public createdBy: string,

@@ -2,6 +2,7 @@ export class RaidItemViewModel {
   constructor(
     public id: string,
     public goal: string,
+    public status: string,
     public peopleNeeded: number,
     public peoplePerticipating: number,
     public pointsForParticipation: any,

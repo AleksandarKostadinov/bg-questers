@@ -1,3 +1,85 @@
-<p>
-  raid-delete works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">You can advertise here!</div>
+    <div class="col-6" *ngIf="raid$ | async as raid">
+
+      <form (ngSubmit)="daleteItem()" class="form-horizontal">
+        <fieldset>
+          <legend>Delete Raid</legend>
+
+          <div class="form-group">
+            <label for="inputGoal" class="col-lg-2 control-label">Goal</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputGoal" value={{raid.goal}} disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputLocation" class="col-lg-2 control-label">Location</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputLocation" value={{raid.location}} disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputImgUrl" class="col-lg-2 control-label">Image</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputImgUrl" value={{raid.imgUrl}} disabled>
+            </div>
+            <img *ngIf="raid.imgUrl" src="{{imgUrl}}"/>
+          </div>
+
+          <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textArea" value={{raid.description}} disabled></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPeopleNeeded" class="col-lg-2 control-label">People Needed</label>
+            <div class="col-lg-10">
+              <input type="number" class="form-control" id="inputPeopleNeeded" value={{raid.peopleNeeded}} disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputPeopleParticipating" class="col-lg-2 control-label">People Participating</label>
+            <div class="col-lg-10">
+              <input type="number" class="form-control" id="inputPeopleParticipating" value={{raid.peopleParticipating}} disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputStartDate" class="col-lg-2 control-label">Start Date</label>
+            <div class="col-lg-10">
+              <input type="date" class="form-control" id="inputStartDate" value={{getDate(raid.startDateTimestamp)}} disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="textAreaDetails" class="col-lg-2 control-label">Additional info</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textAreaDetails" value={{raid.details}} disabled></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="textAreaNeeded" class="col-lg-2 control-label">Items needed</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textAreaNeeded" value={{raid.itemsNeeded}} disabled></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="reset" (click)="cancel()" class="btn btn-default">Back</button>
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RaidItemViewModel } from '../../../core/models/view-models/raid-item.view.model';
 import { AuthService } from '../../../core/services/authentication/auth.service';
-import { RaidsService } from '../../../core/services/raids/raids.service';
 
 @Component({
   selector: 'app-raid-item',

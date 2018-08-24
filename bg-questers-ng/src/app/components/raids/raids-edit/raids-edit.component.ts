@@ -4,6 +4,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { RaidsService } from '../../../core/services/raids/raids.service';
 import { RaidDetailsViewModel } from '../../../core/models/view-models/raid-details.view.model';
+import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
+import { getDate as getDateFn } from '../../../core/utils/helper-functions';
 
 @Component({
   selector: 'app-raids-edit',
@@ -13,12 +16,15 @@ import { RaidDetailsViewModel } from '../../../core/models/view-models/raid-deta
 export class RaidsEditComponent implements OnInit {
   private editRaidForm: FormGroup;
   private id: string;
+  private getDate = getDateFn;
 
   constructor(
     private raidService: RaidsService,
     private ar: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -40,9 +46,13 @@ export class RaidsEditComponent implements OnInit {
     this.raidService
       .edit(this.id, rest)
       .subscribe((data) => {
-        console.log(data),
-          this.router.navigate(['/raids']);
-      }, console.log);
+        this.toastr.success(`Raid "${data['goal']}" successfully edited!`, 'Success!');
+        this.router.navigate(['/raids']);
+      });
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   private _setEditForm(raid: RaidDetailsViewModel) {
@@ -55,7 +65,7 @@ export class RaidsEditComponent implements OnInit {
       peopleParticipating: [raid.peopleParticipating, [Validators.required, Validators.min(0)]],
       status: [raid.status],
       isFinished: [raid.isFinished],
-      startDate: [(new Date(raid.startDateTimestamp)).toISOString().slice(0, 10), Validators.required],
+      startDate: [this.getDate(raid.startDateTimestamp), Validators.required],
       createdAtTimestamp: [raid.createdAtTimestamp, Validators.required],
       createdBy: [raid.createdBy, Validators.required],
       details: [raid.details || ''],

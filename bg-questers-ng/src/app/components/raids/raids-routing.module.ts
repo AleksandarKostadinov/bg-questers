@@ -8,7 +8,7 @@ import { AuthGuard } from '../../core/guards/authentication/auth.guard';
 import { RaidDeleteComponent } from './raid-delete/raid-delete.component';
 
 const routes: Routes = [
-  { path: '', component: RaidsAllComponent},
+  { path: '', component: RaidsAllComponent, canActivate: [AuthGuard]},
   { path: 'create', component: RaidsCreateComponent, canActivate: [AuthGuard]},
   { path: 'edit/:id', component: RaidsEditComponent, canActivate: [AuthGuard]},
   { path: 'delete/:id', component: RaidDeleteComponent, canActivate: [AuthGuard]},

@@ -27,6 +27,7 @@ export class RaidsService {
               new RaidItemViewModel(
                 id,
                 element.goal,
+                element.status,
                 element.peopleNeeded,
                 element.peoplePerticipating,
                 element.pointsForParticipation,
@@ -74,5 +75,9 @@ export class RaidsService {
           data.itemsNeeded || ''
         );
       }));
+  }
+
+  deleteItem(id: string) {
+    return this.http.delete(`${appDomain}/raids/${id}.json`);
   }
 }

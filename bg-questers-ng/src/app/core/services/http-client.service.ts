@@ -19,7 +19,7 @@ export class HttpClientService {
     return this.http.put<T>(url, body);
   }
 
-  public delete<T>(url: string, id: number) {
-    return this.http.delete<T>(`${url}/${id}`);
+  public delete<T>(url: string) {
+    return this.http.delete<T>(url);
   }
 }

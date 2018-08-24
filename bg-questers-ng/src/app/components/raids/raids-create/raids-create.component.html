@@ -73,8 +73,8 @@
 
           <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-              <button type="reset" class="btn btn-default">Cancel</button>
-              <button type="submit" [disabled]="createRaidForm.invalid" class="btn btn-primary">Submit</button>
+              <button type="reset" (click)="cancel()" class="btn btn-default">Back</button>
+              <button type="submit" [disabled]="createRaidForm.invalid" class="btn btn-success">Create</button>
             </div>
           </div>
         </fieldset>

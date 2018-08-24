@@ -5,6 +5,9 @@ import { AuthService } from '../../../core/services/authentication/auth.service'
 import { RaidsService } from '../../../core/services/raids/raids.service';
 import { RaidInputModel } from '../../../core/models/input-models/raid.input.model';
 import { getHoursInMiliseconds } from '../../../core/utils/helper-functions';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   templateUrl: './raids-create.component.html'
@@ -16,7 +19,10 @@ export class RaidsCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private raidService: RaidsService
+    private raidService: RaidsService,
+    private router: Router,
+    private toastr: ToastrService,
+    private location: Location
   ) {
     this.now = new Date();
   }
@@ -48,7 +54,11 @@ export class RaidsCreateComponent implements OnInit {
 
     this.raidService
       .create(rest)
-      .subscribe(console.log);
+      .subscribe((data) => {
+        console.log(data);
+        this.toastr.success('You have initialzed a raid.', 'Success!');
+        this.router.navigate(['/raids']);
+      });
   }
 
   get imgUrl(): string {
@@ -57,5 +67,9 @@ export class RaidsCreateComponent implements OnInit {
 
   get startDate() {
     return this.createRaidForm.get('startDateTimestamp').value;
+  }
+
+  cancel() {
+    this.location.back();
   }
 }
